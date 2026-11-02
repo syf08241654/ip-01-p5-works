@@ -1,0 +1,75 @@
+# ip-01-p5-works · 交互编程作业一
+
+> 作业一：创意代码的基本原理（p5.js）
+> 一个公开仓库 + GitHub Pages，两个作品，各自可网址直接打开。
+
+**作者：宋一凡** ｜ GitHub：[@songyifan](https://github.com/songyifan)
+
+**在线地址：** https://songyifan.github.io/ip-01-p5-works/
+
+## 作品清单
+
+| 入口 | 作品 | 类型 | 说明 |
+|---|---|---|---|
+| [static.html](static.html) | 《暖阳 · 群山》 | 几何构成（静态） | 只用形状、颜色、位置；**没有 draw() 循环**，只有 setup() 画一次 |
+| [dynamic.html](dynamic.html) | 《引力花园》 | 交互动态 | **有 draw()**；四种交互：鼠标移动 / 点击 / 空格键 / 时间变化 |
+| [index.html](index.html) | 作品索引页 | — | 仓库根目录索引，链接上面两个作品 |
+
+## 技术
+
+- p5.js **1.9.4**，通过 jsDelivr CDN 引入，无其他依赖
+- 纯 HTML + CSS + JavaScript，无需构建工具
+- 本地运行：直接双击 `index.html`（需联网加载 p5.js CDN）
+
+## 创作说明
+
+### 1-A 静态 ·《暖阳 · 群山》
+
+- **构图**：暖橙红太阳位于画面黄金分割点（偏右上），是全画唯一的暖色块，构成视觉中心；三层冷蓝群山由浅到深、由高到低依次后退，形成纵深与节奏；前景一排米色草叶用等距 for 循环排布，高度随正弦起伏，收束画面底部。
+- **配色（共 5 色）**：米色天空统一基调；太阳暖橙红 × 群山冷蓝形成**冷暖对比**；三层蓝山取同色系深浅，保证**统一**。每个颜色的职责固定，不是随手取色。
+- **for 循环**：三层山体各用一个 for 循环沿横向取 14 个采样点、以两组正弦波叠加生成起伏轮廓（确定性波形，画面稳定不乱跑）；前景草叶用一个 for 循环等距生成。
+- **静态约束**：整个页面只定义了 `setup()` 和 `windowResized()`，**没有定义 draw()**，画布只在打开时绘制一次。
+
+### 1-B 动态 ·《引力花园》
+
+- **必须的 draw()**：✓ 每帧运行；所有速度都乘以 `deltaTime` 并做了限速（260px/s）与阻尼，帧率波动时运动依然稳定，画面不闪、不抖、不乱跑。
+- **四种交互（满足至少 2 种）**：
+  1. **鼠标移动** —— 粒子被光标吸引，越近受力越强；
+  2. **鼠标点击** —— 产生珊瑚色冲击波，把附近粒子推开，波纹圈淡出即操作反馈；
+  3. **空格键** —— 切换吸引 / 排斥模式：左上角文字即时更新，光标环颜色在青绿（吸引）/ 珊瑚（排斥）间切换；
+  4. **时间变化** —— 粒子做呼吸式缩放（正弦驱动），光标外环随时间旋转。
+- **for 循环**：粒子初始化、每帧更新、冲击波绘制均为 for 循环批量处理。
+- **配色（共 5 色）**：深夜蓝背景（统一）／ 暖金粒子（主体）／ 珊瑚（冲击波 + 排斥警示）／ 青绿（吸引指示）／ 米白（文字）。每个颜色有明确职责。
+- **代码规范**：全部变量为语义化命名（`repelMode`、`breathePhase`、`RIPPLE_RANGE`…），分区块注释，无 a / b / c1 满屏命名，无复制粘贴冗余。
+
+## 画布约束自查
+
+- ✅ 两个作品页都设置 `html, body { margin:0; overflow:hidden }`，画布铺满全屏、无滚动条错位
+- ✅ 动态页动画基于 deltaTime，速度正常、无闪烁抖动
+
+## 部署到 GitHub Pages
+
+1. 在 GitHub 新建**公开仓库**，仓库名必须是 `ip-01-p5-works`（不要勾选自动生成 README）
+2. 本地推送：
+
+```bash
+git init
+git add .
+git commit -m "hw01: p5 静态构成《暖阳群山》+ 交互动态《引力花园》"
+git branch -M main
+git remote add origin https://github.com/songyifan/ip-01-p5-works.git
+git push -u origin main
+```
+
+3. 打开仓库 **Settings → Pages**，Branch 选择 `main` / `(root)`，点 Save
+4. 等待 1–2 分钟，访问：`https://songyifan.github.io/ip-01-p5-works/`
+   - 索引页：`https://songyifan.github.io/ip-01-p5-works/`
+   - 静态作品：`https://songyifan.github.io/ip-01-p5-works/static.html`
+   - 交互作品：`https://songyifan.github.io/ip-01-p5-works/dynamic.html`
+
+## 录屏指引（对应评分 15 分）
+
+- 分别录制两个作品的操作过程，各 20–40 秒即可
+- **static.html**：打开页面，展示整体构图（可缩放窗口展示自适应）
+- **dynamic.html**：依次演示 —— 移动鼠标看粒子聚拢 → 点击看冲击波 → 按空格看模式切换（文字 + 光标环变色）→ 再点击看排斥效果
+- Windows 录屏：`Win + G`（Xbox Game Bar）或 OBS；录完与 README 一起提交
