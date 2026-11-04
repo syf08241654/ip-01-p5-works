@@ -3,9 +3,9 @@
 > 作业一：创意代码的基本原理（p5.js）
 > 一个公开仓库 + GitHub Pages，两个作品，各自可网址直接打开。
 
-**作者：宋一凡** ｜ GitHub：[@songyifan](https://github.com/songyifan)
+**作者：宋一凡** ｜ GitHub：[@syf08241654](https://github.com/syf08241654)
 
-**在线地址：** https://songyifan.github.io/ip-01-p5-works/
+**在线地址：** https://syf08241654.github.io/ip-01-p5-works/
 
 ## 作品清单
 
@@ -57,15 +57,15 @@ git init
 git add .
 git commit -m "hw01: p5 静态构成《暖阳群山》+ 交互动态《引力花园》"
 git branch -M main
-git remote add origin https://github.com/songyifan/ip-01-p5-works.git
+git remote add origin https://github.com/syf08241654/ip-01-p5-works.git
 git push -u origin main
 ```
 
 3. 打开仓库 **Settings → Pages**，Branch 选择 `main` / `(root)`，点 Save
-4. 等待 1–2 分钟，访问：`https://songyifan.github.io/ip-01-p5-works/`
-   - 索引页：`https://songyifan.github.io/ip-01-p5-works/`
-   - 静态作品：`https://songyifan.github.io/ip-01-p5-works/static.html`
-   - 交互作品：`https://songyifan.github.io/ip-01-p5-works/dynamic.html`
+4. 等待 1–2 分钟，访问：`https://syf08241654.github.io/ip-01-p5-works/`
+   - 索引页：`https://syf08241654.github.io/ip-01-p5-works/`
+   - 静态作品：`https://syf08241654.github.io/ip-01-p5-works/static.html`
+   - 交互作品：`https://syf08241654.github.io/ip-01-p5-works/dynamic.html`
 
 ## 录屏指引（对应评分 15 分）
 
